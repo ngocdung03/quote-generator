@@ -3,9 +3,22 @@ const quoteText = document.getElementById('quote');
 const authorText = document.getElementById('author');
 const twitterBtn = document.getElementById('twitter');
 const newQuoteBtn = document.getElementById('new-quote');
+const loader = document.getElementById('loader');
 
+function showLoadingSpinner() {
+    loader.hidden = false;
+    quoteContainer.hidden = true;
+}
+
+function removeLoadingSpinner() {
+    if (!loader.hidden) {
+        quoteContainer.hidden = false;
+        loader.hidden = true;
+    }
+}
 // Get Quote From API forismatic.com/en/api
 async function getQuote() {
+    showLoadingSpinner();
     // may create your own proxy later
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
     // adding '?method=getQuote'
@@ -29,6 +42,8 @@ async function getQuote() {
         authorText.innerText = data.quoteAuthor;
         quoteText.innerText = data.quoteText;
         //console.log(data);
+        // Stop Loader, Show Quote
+        removeLoadingSpinner();
     } catch (error) {
         // some quote using special characters -> error -> get new quote
         getQuote();
@@ -50,4 +65,5 @@ newQuoteBtn.addEventListener('click', getQuote);
 twitterBtn.addEventListener('click', tweetQuote);
 
 // On Load (these are at the bottom bcs you want the above ones always declare before you call it )
-getQuote();
+//getQuote();
+showLoadingSpinner();

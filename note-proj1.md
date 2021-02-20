@@ -29,4 +29,8 @@
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
 - Web intent URL:
     - go: developer.twitter.com/en/docs/twitter-for-websites/tweet-button/guides/web-intent
-    
+- Create a loader (adding animation): https://www.w3schools.com/howto/howto_css_loader.asp
+
+- Useful practice: 
+    - Name meaningful variables
+    - Try to break the codes to see what happen when something breaks out: `thow new Error('oops')`
